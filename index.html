@@ -22,27 +22,11 @@
 </main></div>
 <audio id="ganpatiMusic" autoplay loop preload="auto"><source src="ganpati-music.mpeg" type="audio/mpeg"></audio>
 <script>
-async function shareInvite(){
+function shareInvite(){
   const url='https://sonuys1432-create.github.io/ganpati-invitation/';
-  const data={
-    title:'गणपति बप्पा मोरया | Rajbher Parivaar',
-    text:'Rajbher Parivaar की ओर से गणपति बप्पा के स्थापना एवं दर्शन का हार्दिक निमंत्रण 🙏',
-    url:url
-  };
-  try{
-    if(navigator.share && (!navigator.canShare || navigator.canShare(data))){
-      await navigator.share(data);
-      return;
-    }
-  }catch(e){
-    if(e && e.name==='AbortError') return;
-  }
-  try{
-    await navigator.clipboard.writeText(url);
-    alert('Invitation link copied! अब WhatsApp पर paste करके भेज दो 🙏');
-  }catch(e){
-    prompt('इस link को copy करके WhatsApp पर भेजो:',url);
-  }
+  const text='🙏 गणपति बप्पा मोरया! Rajbher Parivaar की ओर से गणपति बप्पा के स्थापना एवं दर्शन का हार्दिक निमंत्रण।\n\n🌺 Invitation खोलें: '+url;
+  const whatsapp='https://wa.me/?text='+encodeURIComponent(text);
+  window.open(whatsapp,'_blank');
 }
 const a=document.getElementById('ganpatiMusic');a.volume=.75;a.play().catch(()=>{const s=()=>a.play().catch(()=>{});document.addEventListener('pointerdown',s,{once:true});document.addEventListener('keydown',s,{once:true})});
 </script>
